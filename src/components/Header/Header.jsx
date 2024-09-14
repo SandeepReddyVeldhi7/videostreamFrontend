@@ -57,7 +57,7 @@ const Header = () => {
         <img
           alt="logo"
           className="w-16 h-14 sm:w-12 sm:h-10 object-cover rounded-xl cursor-pointer"
-          src="/images/images.png" // Path relative to the public directory
+          src="https://png.pngtree.com/element_our/sm/20180415/sm_5ad31d9b53530.png"
         />
         <h1 className="text-2xl font-bold text-white hidden sm:block">
           Show 🔥
