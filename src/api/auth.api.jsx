@@ -19,23 +19,7 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Axios interceptor for handling token expiration and refreshing
-API.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      try {
-        await API.post("users/refresh-token");
-        return API(originalRequest);
-      } catch (err) {
-        return Promise.reject(err);
-      }
-    }
-    return Promise.reject(error);
-  }
-);
+
 
 
 
@@ -94,10 +78,10 @@ export const registerUser = async (data) => {
 
   try {
     const { data } = await API.post("/users/register", formData);
-    toast.success(data?.message);
+     toast.success("Registration successful");
     return data?.data;
   } catch (error) {
-    handleAPIError(error);
+     toast.error(error.message || "Registration failed");
   }
 };
 

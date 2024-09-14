@@ -49,7 +49,7 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-console.log("Is Loading:", isLoading);
+
   return (
     <div className="h-screen inset-0 flex items-center justify-center bg-black bg-opacity-50 ">
       <div className="bg-dark rounded-lg p-6 max-w-md w-full">
@@ -107,12 +107,7 @@ console.log("Is Loading:", isLoading);
             {isLoading ? "Logging in..." : "Login"}
           </button>
         </form>
-        {isError && (
-          <p className="text-red-600 text-3xl font-bold mt-2">
-            {" "}
-            {error?.message}
-          </p>
-        )}
+        
         {isSuccess && (
           <p className="text-green-500 font-bold mt-2">Login successful!</p>
         )}

@@ -12,7 +12,7 @@ const RegisterForm = () => {
     avatar: null,
     coverPhoto: null,
   });
-console.log("fromData",formData)
+
   const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
   const registerMutation = useRegisterUser();
@@ -45,7 +45,7 @@ console.log("fromData",formData)
       onError: (error) => {
         setLoading(false);
           toast.error(error.message || "Registration failed"); 
-        toast.error(error || "Registration failed");
+  
       },
     });
   };
