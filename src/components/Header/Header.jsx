@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useLogout } from "../../hooks/auth.hook";
 import { useDispatch, useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FiSearch } from "react-icons/fi"; // Import search icon
+import { FiSearch } from "react-icons/fi";
 import { toogleMenu } from "../../features/uiSlice";
 import { setUser } from "../../features/authSlice";
 import { setSearchQuery } from "../../features/searchSlice";
 import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-hot-toast"; // Import toast
+import { toast } from "react-hot-toast";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,11 +17,10 @@ const Header = () => {
   const { mutateAsync: logout } = useLogout();
 
   const [searchText, setSearchText] = useState("");
-  const [showSearchInput, setShowSearchInput] = useState(false); // State to toggle search input on small devices
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
   useEffect(() => {
     if (searchQuery) {
-      // Update URL when searchQuery changes
       navigate(`/?search=${encodeURIComponent(searchQuery)}`);
     }
   }, [searchQuery, navigate]);
@@ -33,7 +32,7 @@ const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setSearchQuery(searchText));
-    toast.success(`Searching for: ${searchText}`); // Toast for search action
+    toast.success(`Searching for: ${searchText}`);
   };
 
   const handleLogout = async () => {
@@ -41,10 +40,10 @@ const Header = () => {
       const session = await logout();
       if (session) {
         dispatch(setUser(null));
-        toast.success("Successfully logged out!"); // Success toast for logout
+        toast.success("Successfully logged out!");
       }
     } catch (error) {
-      toast.error("Failed to logout. Please try again!"); // Error toast for logout failure
+      toast.error("Failed to logout. Please try again!");
     }
   };
 
@@ -58,7 +57,7 @@ const Header = () => {
         <img
           alt="logo"
           className="w-16 h-14 sm:w-12 sm:h-10 object-cover rounded-xl cursor-pointer"
-          src="../../../assests/images.png"
+          src="/images/images.png" // Path relative to the public directory
         />
         <h1 className="text-2xl font-bold text-white hidden sm:block">
           Show 🔥
@@ -66,14 +65,17 @@ const Header = () => {
       </Link>
 
       <div className="flex items-center gap-4">
-        <div className="flex items-center ">
+        <div className="flex items-center">
           <form
             onSubmit={handleSubmit}
-            className={` flex items-center absolute left-0 right-0 z-50 ${
+            className={`flex items-center absolute left-0 right-0 z-50 ${
               showSearchInput ? "block" : "hidden"
             } sm:relative sm:flex sm:z-auto`}
           >
-            <h1 className="bg-white mx-2 p-2 sm:hidden" onClick={toggleSearchInput}>
+            <h1
+              className="bg-white mx-2 p-2 sm:hidden"
+              onClick={toggleSearchInput}
+            >
               ⬅️
             </h1>
             <input
