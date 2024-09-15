@@ -7,28 +7,29 @@ const API = axios.create({
   withCredentials: true,
 });
 
-// Axios interceptor to include JWT token
 API.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    console.log("Request Config:", config); // Debugging line to check config
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    console.error("Request Error:", error); // Log request errors
+    return Promise.reject(error);
+  }
 );
-
-
-
-
 
 const handleAPIError = (error) => {
   const errorMessage =
     error?.response?.data?.error || "An unexpected error occurred";
+  console.error("API Error:", error); // Log the full error
   toast.error(errorMessage);
   throw new Error(errorMessage);
 };
+
 
 export const login = async (formData) => {
   try {
