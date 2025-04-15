@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import Sidebar1 from './components/Header/Sidebar1'
 import { BASE_URL } from "../constants";
+import Footer from './Foot/Footer';
 
 
 const API = axios.create({
@@ -37,6 +38,9 @@ function App() {
         {toogleBox && <Sidebar1 />}
         <Outlet />
       </div>
+
+<Footer/>
+
     </div>
   );
 }

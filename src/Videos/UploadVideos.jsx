@@ -27,7 +27,7 @@ const VideoUpload = () => {
         </span>
         <Link
           to="/login"
-          className="hover:text-blue-400 cursor-pointer text-xl font-bold"
+          className="hover:text-blue-500 cursor-pointer text-xl font-bold"
         >
           Login
         </Link>
