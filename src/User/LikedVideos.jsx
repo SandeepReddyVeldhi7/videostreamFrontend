@@ -39,7 +39,7 @@ const LikedVideos = () => {
   return (
     <div className=" lg:mx-80 lg:my-52 flex flex-col items-center">
       <h1 className="font-bold text-xl">Liked Videos</h1>
-      {data && data.length > 0 ? (
+      {data && data?.length > 0 ? (
         <ul className="">
           {data.map((item, index) => {
             const video = item.likedVideo; // Accessing likedVideo here

@@ -37,7 +37,7 @@ const Login = () => {
   // Handle the side effect after a successful login
   useEffect(() => {
     if (isSuccess && loginData) {
-      dispatch(setUser(loginData.user)); // Assume loginData.user contains the user information
+      dispatch(setUser(loginData?.user)); // Assume loginData.user contains the user information
       toast.success("Login successful!");
       navigate("/");
     }
