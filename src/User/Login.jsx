@@ -38,7 +38,7 @@ const Login = () => {
   useEffect(() => {
     if (isSuccess && loginData) {
       dispatch(setUser(loginData?.user)); // Assume loginData.user contains the user information
-      toast.success("Login successful!");
+      toast.success("Login successful!!");
       navigate("/");
     }
     if (isError && error) {
@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen inset-0 flex items-center justify-center bg-black bg-opacity-50 ">
+    <div className="h-[90vh] inset-0 flex items-center justify-center bg-black bg-opacity-50 ">
       <div className="bg-dark rounded-lg p-6 max-w-md w-full">
         <div className="flex items-center justify-center gap-3 my-2">
           <img
